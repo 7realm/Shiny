@@ -10,8 +10,8 @@ public class DarknessGridScript : MonoBehaviour {
 	
 	TwoDInArray<Particle> _particles;
 	const int n = 20;
-	const float maxSize = 6;
-	const float maxDarknessSpread = .001f;
+	const float maxSize = 12;
+	const float maxDarknessSpread = .01f;
 	const float gridStep = 1.3f;
 	
 	// Use this for initialization
@@ -54,10 +54,12 @@ public class DarknessGridScript : MonoBehaviour {
 		
 		for (int i = 1; i < n -1; i++) {
 			for (int j = 1; j < n - 1; j++) {
-				float f = 0.01f * _particles[i, j].size;
-				if (f > maxDarknessSpread) 
-					f = maxDarknessSpread;
 				
+				float f = 0;
+				
+				if (_particles[i, j].size == maxSize)
+					f = maxDarknessSpread;
+							
 				//deltas[i - 1, j - 1] += f;
 				deltas[i + 0, j - 1] += f;
 				//deltas[i + 1, j - 1] += f;

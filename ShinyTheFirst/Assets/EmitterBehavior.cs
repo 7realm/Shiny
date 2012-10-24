@@ -54,9 +54,9 @@ public class EmitterBehavior : MonoBehaviour {
 				var dist = (particle.position - darkParticle.position).sqrMagnitude;// - DarknessGridScript.particles[j].size;
 				//dist *= 100;
 				//if (dist < 1) dist = 1;
-				if (dist < 2) 
+				if (dist < 4) 
 				{
-					float particleEnergy = (particle.size);
+					float particleEnergy = (particle.size*5);
 					
 					float giveEnergy = Mathf.Min(0.2f, particleEnergy);
 					
@@ -66,7 +66,7 @@ public class EmitterBehavior : MonoBehaviour {
 					
 					
 					if (DarknessGridScript.particles[j].size < 0) DarknessGridScript.particles[j].size = 0;
-					particles[i].size -= giveEnergy;
+					particles[i].size -= giveEnergy/5;
 					if (particles[i].size < 0) 
 						particles[i].size = 0f;
 				}
